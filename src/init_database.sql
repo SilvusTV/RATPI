@@ -64,13 +64,11 @@ create table validations
         constraint validations_pk
             primary key,
     id_support           integer   not null
---         constraint validations_supports_id_fk
---             references supports
-             ,
+        constraint validations_supports_id_fk
+            references supports,
     id_station           integer   not null
---         constraint validations_stations_id_fk
---             references stations,
-                ,
+        constraint validations_stations_id_fk
+            references stations,
     date_heur_validation timestamp not null
 );
 
@@ -98,13 +96,11 @@ create table dossiers_client
     nom_famille            text         not null,
     date_naissance         date         not null,
     id_adresse_residence   integer
---         constraint dossiers_client_adresses_client_id_fk
---             references adresses_client,
-                ,
+        constraint dossiers_client_adresses_client_id_fk
+            references adresses_client,
     id_adresse_facturation integer
---         constraint dossiers_client_adresses_client_id_fk_2
---             references adresses_client,
-                ,
+        constraint dossiers_client_adresses_client_id_fk_2
+            references adresses_client,
     email                  varchar(128),
     tel                    varchar(15),
     iban                   varchar(34),
@@ -118,17 +114,14 @@ create table abonnements
         constraint abonnements_pk
             primary key,
     id_support      integer   not null
---         constraint abonnements_supports_id_fk
---             references supports,
-                ,
+        constraint abonnements_supports_id_fk
+            references supports,
     id_dossier      integer   not null
---         constraint abonnements_dossiers_client_id_fk
---             references dossiers_client,
-                ,
+        constraint abonnements_dossiers_client_id_fk
+            references dossiers_client,
     id_tarification integer   not null
---         constraint abonnements_tarifications_id_fk
---             references tarifications,
-                ,
+        constraint abonnements_tarifications_id_fk
+            references tarifications,
     date_debut      timestamp not null,
     date_fin        timestamp not null
 );
@@ -139,15 +132,13 @@ create table tickets
         constraint tickets_pk
             primary key,
     id_support             integer   not null
---         constraint tickets_supports_id_fk
---             references supports,
-                ,
+        constraint tickets_supports_id_fk
+            references supports,
     date_achat             timestamp not null,
     date_expiration        timestamp not null,
     prix_unitaire_centimes integer   not null,
     id_station             integer   not null
---         constraint tickets_stations_id_fk
---             references stations,
-                ,
+        constraint tickets_stations_id_fk
+            references stations,
     date_heure_validation  timestamp
 );
