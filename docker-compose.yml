@@ -1,0 +1,17 @@
+#image docker of postgres
+#container_name name of container
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: esgipwd
+      POSTGRES_DB: esgi
+      POSTGRES_USER: esgi
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker-compose/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  postgres_data:
