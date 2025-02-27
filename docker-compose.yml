@@ -1,8 +1,7 @@
-#image docker of postgres
-#container_name name of container
 services:
   postgres:
     image: postgres
+    container_name: postgres_container
     restart: always
     environment:
       POSTGRES_PASSWORD: esgipwd
@@ -12,7 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - ./docker-compose/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker-compose/db/ready.sql:/docker-entrypoint-initdb.d/ready.sql
       - postgres_data:/var/lib/postgresql/data
-      - ./docker-compose/db/readyd.b:/docker-entrypoint-initdb.d/readyd.b
 volumes:
   postgres_data:
